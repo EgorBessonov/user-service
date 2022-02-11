@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package protocol;
+
+option go_package = "github.com/EgorBessonov/TradingPlatform/UserService/internal/userService";
+
+service User{
+  rpc Registration(RegistrationRequest) returns (RegistrationResponse);
+  rpc Authentication(AuthenticationRequest) returns (AuthenticationResponse);
+}
+
+message RegistrationRequest{
+  string user_email = 1;
+  string user_name = 2;
+  string user_password = 3;
+}
+
+message RegistrationResponse{
+  string result = 1;
+}
+
+message AuthenticationRequest{
+  string user_email = 1;
+  string user_password = 2;
+}
+
+message AuthenticationResponse{
+  string user_id = 1;
+  string user_name = 2;
+}
